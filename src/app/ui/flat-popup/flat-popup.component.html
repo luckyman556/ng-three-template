@@ -1,0 +1,8 @@
+<div *ngIf="open" class="flat-popup">
+    <h2>{{getFlatInfo().flatName}}</h2>
+    <p>
+        <span>Parent name:</span>
+        <span>{{getFlatInfo().flatParent}}</span>
+    </p>
+    <button class="close" (click)="closePopup()">x</button>
+</div>

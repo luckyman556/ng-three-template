@@ -1,0 +1,17 @@
+.dev-options-edit {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+} 
+.dev-options-box {
+    width: 400px;
+    position: absolute;
+    max-height: 80vh;
+    overflow-y: auto;
+    top: 65px; 
+    right: -100%;
+    transition: 0.5s;
+    &.open { 
+        right: 10px;
+    }
+}

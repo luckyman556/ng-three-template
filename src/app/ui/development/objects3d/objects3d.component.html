@@ -1,0 +1,22 @@
+<mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+    <mat-panel-title>
+        3D объекты
+    </mat-panel-title> 
+    </mat-expansion-panel-header>     
+    <mat-expansion-panel class="mt-3" *ngFor="let object3D of objects3D" hideToggle>
+        <mat-expansion-panel-header>
+        <mat-panel-title>
+             {{object3D.value.name ? object3D.value.name : '3D Объект'}}   
+        </mat-panel-title> 
+        </mat-expansion-panel-header>  
+        <app-object3d-edit [object3D]="object3D"></app-object3d-edit>            
+
+    </mat-expansion-panel>    
+    <div>
+        <button mat-raised-button color="primary" class="mt-3" (click)="add3DObject()">Добавить объект <mat-icon>add</mat-icon></button> 
+    </div> 
+    <div *ngIf="objects3D.length > 0">
+        <button mat-raised-button color="primary" class="mt-3" [cdkCopyToClipboard]="copy3dObjects()">Скопировать JSON</button>  
+    </div>
+</mat-expansion-panel> 

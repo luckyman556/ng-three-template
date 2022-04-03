@@ -1,0 +1,94 @@
+<div [formGroup]="object3D" (click)="consoleFn();">
+    <mat-form-field  class="w-100" appearance="fill">
+        <mat-label>File name</mat-label>
+        <input matInput formControlName="filename">
+    </mat-form-field>  
+
+    <mat-form-field  class="w-100" appearance="fill">
+        <mat-label>Forlder</mat-label>
+        <input matInput formControlName="folder">
+    </mat-form-field>
+
+    <mat-form-field  class="w-100" appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="fill">
+        <mat-label>Select</mat-label>
+        <mat-select  formControlName="type">
+            <mat-option *ngFor="let type of objectsTypes" [value]="type">{{type}}</mat-option> 
+        </mat-select>
+    </mat-form-field>
+    <button *ngIf="!onScene" mat-raised-button color="primary" class="mt-3" (click)="addObjectOnScene(object3D)">Добавить на сцену</button> 
+    <button *ngIf="onScene" mat-raised-button color="primary" class="mt-3" (click)="attachToControls(object3D)"><mat-icon>open_with</mat-icon></button> 
+    <button *ngIf="onScene" mat-raised-button color="primary" class="mt-3" (click)="detachFromControls()"><mat-icon>open_in_browser</mat-icon></button> 
+    <div *ngIf="objectGroup" class="container-fluid p-0" [formGroup]="objectForm">
+        <div class="row">
+            <div class="col-12 p-0 mt-3">
+                Position
+            </div>
+            <div class="col-3 p-0">
+                <mat-form-field  class="w-100" appearance="fill">
+                    <mat-label>X</mat-label>
+                    <input type="number" [attr.step]="objectForm.value.positionStep" matInput formControlName="positionX">
+                </mat-form-field>
+            </div>
+            <div class="col-3 p-0">
+                <mat-form-field  class="w-100" appearance="fill">
+                    <mat-label>Y</mat-label>
+                    <input type="number" [attr.step]="objectForm.value.positionStep" matInput formControlName="positionY">
+                </mat-form-field>
+            </div>
+            <div class="col-3 p-0">
+                <mat-form-field  class="w-100" appearance="fill">
+                    <mat-label>Z</mat-label>
+                    <input type="number" [attr.step]="objectForm.value.positionStep" matInput formControlName="positionZ">
+                </mat-form-field>
+            </div> 
+            <div class="col-3 p-0">
+                <mat-form-field  class="w-100" appearance="fill">
+                    <mat-label>Step</mat-label>
+                    <input type="number" [attr.step]="0.01"  matInput formControlName="positionStep">
+                </mat-form-field>
+            </div> 
+        </div>
+        <div class="row">
+            <div class="col-12 p-0 mt-3">
+                Scale
+            </div>
+            <div class="col-3 p-0">
+                <mat-form-field  class="w-100" appearance="fill">
+                    <mat-label>X</mat-label>
+                    <input type="number" [attr.step]="objectForm.value.scaleStep" matInput formControlName="scaleX">
+                </mat-form-field>
+            </div>
+            <div class="col-3 p-0">
+                <mat-form-field  class="w-100" appearance="fill">
+                    <mat-label>Y</mat-label>
+                    <input type="number"  [attr.step]="objectForm.value.scaleStep" matInput formControlName="scaleY">
+                </mat-form-field>
+            </div>
+            <div class="col-3 p-0">
+                <mat-form-field  class="w-100" appearance="fill">
+                    <mat-label>Z</mat-label>
+                    <input type="number"  [attr.step]="objectForm.value.scaleStep" matInput formControlName="scaleZ">
+                </mat-form-field>
+            </div> 
+            <div class="col-3 p-0">
+                <mat-form-field  class="w-100" appearance="fill">
+                    <mat-label>Step</mat-label>
+                    <input type="number" [attr.step]="0.01"  matInput formControlName="scaleStep">
+                </mat-form-field>
+            </div> 
+        </div>
+        <div class="materials row">            
+            <div class="col-12 p-0 mt-3">
+                <h3>Materials</h3>
+                <div class='row'>
+                    <app-material *ngFor="let material of materials" [material]="material"></app-material>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

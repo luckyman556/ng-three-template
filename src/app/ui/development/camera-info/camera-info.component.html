@@ -1,0 +1,40 @@
+<mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+    <mat-panel-title>
+        Данные камеры
+    </mat-panel-title> 
+    </mat-expansion-panel-header>              
+<p>
+    <span>RotationX: </span><span> {{engServ.scene.userData.targetRotationX}}</span>
+</p> 
+<p>
+    <span>RotationY: </span><span> {{engServ.scene.userData.targetRotationY}}</span>
+</p>
+<p>
+    <span>PositionY: </span><span> {{engServ.scene.userData.targetPositionY}}</span>
+</p>
+<p>
+    <span>Zoom: </span><span> {{engServ.scene.userData.targetZoom}}</span>
+</p>
+</mat-expansion-panel> 
+<mat-expansion-panel hideToggle [formGroup]="settingsForm">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+        Лимиты камеры
+        </mat-panel-title> 
+    </mat-expansion-panel-header>
+    <div>
+        <h4>RotationX Limit:</h4> 
+        <div class="range">
+            <ngx-slider      
+            [(value)]="rotationXMin" 
+            [(highValue)]="rotationXMax" 
+            [options]="rotationXOptions" 
+            (valueChange)="rotationXMinChange($event)"
+            (highValueChange)="rotationXMaxChange($event)"
+            ></ngx-slider>  
+
+        </div>               
+    </div> 
+    <button mat-raised-button color="accent" [cdkCopyToClipboard]="getCameraSettings()" >Copy camera limits</button>
+</mat-expansion-panel> 

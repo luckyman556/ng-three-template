@@ -1,3 +1,14 @@
 <div class="engine-wrapper">
-  <canvas #rendererCanvas id="renderCanvas"></canvas>
+  <canvas 
+  #rendererCanvas 
+  id="renderCanvas" 
+  (mouseup)="interaction.pointerUp($event)" 
+  (touchend)="interaction.pointerUp($event)" 
+  (mouseout)="interaction.pointerUp($event)" 
+  (mousedown)="interaction.pointerDown($event);" 
+  (touchstart)="interaction.pointerDown($event); interaction.mousemove($event)" 
+  (mousemove)="interaction.mousemove($event)" 
+  (touchmove)="interaction.mousemove($event)" 
+  (click)="interaction.click($event)"
+  (wheel)="interaction.mouseWheel($event)"></canvas>
 </div>

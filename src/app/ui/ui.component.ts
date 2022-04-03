@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { EngineService } from '../engine/services/engine.service';
 
 @Component({
   selector: 'app-ui',
@@ -6,7 +7,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class UiComponent implements OnInit {
 
-  public constructor() {
+  public constructor(public engServ: EngineService) {
   }
 
   public ngOnInit(): void {

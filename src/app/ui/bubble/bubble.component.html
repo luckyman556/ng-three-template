@@ -1,0 +1,5 @@
+ <div 
+ *ngIf="bubbleEnable()" 
+ class="bubble"
+ [ngStyle]="{ 'position' : 'absolute', 'top' : getBubble().top + 'px', 'left' : getBubble().left + 'px'}" 
+ >{{getBubble().html}}</div>

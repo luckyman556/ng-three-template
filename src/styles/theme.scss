@@ -1,0 +1,38 @@
+
+@use '~@angular/material' as mat;
+@use 'sass:map';
+
+@include mat.core(); 
+$app-primiry : mat.define-palette(mat.$indigo-palette);
+$app-accent : mat.define-palette(mat.$yellow-palette);  
+$app-warn : mat.define-palette(mat.$red-palette);  
+$app-theme: mat.define-light-theme((
+ color: (
+   primary: $app-primiry,
+   accent: $app-accent,
+   warn: $app-warn,
+ )
+));
+@include mat.all-component-themes($app-theme);
+
+  
+$color-config:    mat.get-color-config($app-theme);
+$primary-palette: map.get($color-config, 'primary');
+::-webkit-scrollbar {
+    width: 4px;
+    overflow-y: scroll;
+    background: mat.get-color-from-palette($primary-palette, 100);
+    box-shadow: inset 0 0 4px #707070;
+  }
+::-webkit-scrollbar-thumb {
+    background:  mat.get-color-from-palette($primary-palette, 500);
+    border-radius: 10px;
+}
+.hidden-scrollbar {
+    &::-webkit-scrollbar {
+        width: 0px;
+    }
+    *::-webkit-scrollbar {
+        width: 0px;
+    }
+}

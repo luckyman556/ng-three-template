@@ -1,0 +1,12 @@
+<button class="dev-options-edit" mat-mini-fab color="primary" (click)="toggleDevOptions()">
+    <mat-icon *ngIf="optionsOpen">close</mat-icon>
+    <mat-icon *ngIf="!optionsOpen">edit</mat-icon>
+</button>
+<div class="dev-options-box" [ngClass]="{'open': optionsOpen}" (click)="consoleFn()">
+    
+    <div *ngIf="optionsOpen"  > 
+        <app-camera-info></app-camera-info>
+        <app-buildings></app-buildings>
+        <app-objects3d></app-objects3d> 
+    </div>
+</div>
